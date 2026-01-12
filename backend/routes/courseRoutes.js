@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { createCourse, getCourses, enrollCourse, getMyCourses } = require("../controllers/courseController");
+const { createCourse, getCourses, enrollCourse, getMyCourses, getTeacherCourses } = require("../controllers/courseController");
 const protect = require("../middleware/authMiddleware");
 const authorizeRoles = require("../middleware/roleMiddleware");
 
@@ -29,6 +29,14 @@ router.get(
   protect,
   authorizeRoles("student"),
   getMyCourses
+);
+
+// Teacher → My Created Courses
+router.get(
+  "/teacher",
+  protect,
+  authorizeRoles("teacher", "admin"),
+  getTeacherCourses
 );
 
 module.exports = router;

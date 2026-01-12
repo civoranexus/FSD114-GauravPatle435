@@ -65,3 +65,16 @@ exports.getMyCourses = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch enrolled courses" });
   }
 };
+
+// Get courses created by logged-in teacher
+exports.getTeacherCourses = async (req, res) => {
+  try {
+    const courses = await Course.find({
+      createdBy: req.user.id,
+    }).populate("students", "name email");
+
+    res.json(courses);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch teacher courses" });
+  }
+};

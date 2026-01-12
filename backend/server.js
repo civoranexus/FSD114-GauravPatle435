@@ -37,6 +37,11 @@ const courseRoutes = require("./routes/courseRoutes");
 
 app.use("/api/courses", courseRoutes);
 
+// admin routes
+const adminRoutes = require("./routes/adminRoutes");
+
+app.use("/api/admin", adminRoutes);
+
 // Test route
 app.get("/", (req, res) => {
   res.send("EduVillage Backend Running");
