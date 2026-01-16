@@ -16,6 +16,8 @@ import MyCourses from "./pages/MyCourses";
 import TeacherCourses from "./pages/TeacherCourses";
 import EditCourse from "./pages/EditCourse";
 
+import AdminUsers from "./pages/AdminUsers";
+
 
 
 function App() {
@@ -82,6 +84,15 @@ function App() {
    element={<TeacherCourses />} />
   <Route path="/teacher/courses/edit/:id" 
    element={<EditCourse/>} />
+
+   <Route
+  path="/admin/users"
+  element={
+    <AdminRoute>
+      <AdminUsers />
+    </AdminRoute>
+  }
+/>
 
       </Routes>
     </BrowserRouter>

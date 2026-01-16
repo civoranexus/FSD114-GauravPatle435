@@ -33,12 +33,13 @@ function AdminDashboard() {
       <p>Welcome, {user.name}</p>
       <p>Role: {user.role}</p>
 
-      <a href="/admin/delete-course">🗑️ Delete Courses</a>
+      
 
       <ul>
-         <li>👥 Manage Users</li>
-         <li>📚 Manage Courses</li>
-         <li>🧹 Delete Courses</li>
+         <li><a href="/admin/users"> <button>👥 Manage Users</button></a></li>
+         <li><a href="/courses"><button>📚 All Courses</button></a></li>
+         <li><a href="/create-course"><button>➕ Create Course</button></a></li>
+         <li><a href="/admin/delete-course"><button>🗑️ Delete Courses</button></a></li>
          <li>📊 View System Reports</li>
        </ul>
     </div>
