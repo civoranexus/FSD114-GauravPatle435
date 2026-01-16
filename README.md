@@ -130,4 +130,35 @@
   Made with ❤️ by CivoraX Team
 </p>
 
+---
 
+## 📘 Project: EduVillage – Online Learning Platform
+
+**Intern Name:** Gaurav Patle  
+**Internship:** CivoraX Internship Program  
+**Project ID:** FSD114  
+**Domain:** Full Stack Development (E-Learning Platform)
+
+### 🎯 Project Objective
+EduVillage is a full-stack online learning platform designed to connect students, teachers, and administrators in a structured digital learning environment.  
+The platform supports role-based access, course creation, content delivery, progress tracking, and assessments.
+
+### 👥 User Roles
+- **Student:** Enroll in courses, consume content, track progress
+- **Teacher:** Create and manage courses and lessons
+- **Admin:** Manage users, courses, and platform activity
+
+### 🛠 Tech Stack
+- **Frontend:** React.js, HTML, CSS, JavaScript
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT (Role-Based Access Control)
+- **Version Control:** Git & GitHub
+
+### 📂 Repository Structure
+docs/        → Database schema & documentation
+backend/     → Server-side application
+frontend/    → Client-side application
+
+### 📐 Documentation
+- Database Schema: `docs/database-schema.draw.io`
