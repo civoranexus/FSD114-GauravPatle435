@@ -20,6 +20,9 @@ import AdminUsers from "./pages/AdminUsers";
 
 import CourseDetails from "./pages/CourseDetails";
 import AddLesson from "./pages/AddLesson";
+import CreateQuiz from "./pages/CreateQuiz";
+import AttemptQuiz from "./pages/AttemptQuiz";
+import QuizResults from "./pages/QuizResults";
 
 
 
@@ -108,6 +111,9 @@ function App() {
 
 <Route path="/add-lesson/:id" element={<AddLesson />} />
 <Route path="/teacher/courses/add-lesson/:id" element={<AddLesson />} />
+<Route path="/teacher/create-quiz/:id" element={<CreateQuiz />} />
+<Route path="/student/quiz/:id" element={<AttemptQuiz />} />
+<Route path="/student/results" element={<QuizResults />} />
 
       </Routes>
     </BrowserRouter>

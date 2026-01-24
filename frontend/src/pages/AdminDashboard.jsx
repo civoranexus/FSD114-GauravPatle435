@@ -1,20 +1,4 @@
-// function AdminDashboard( {user}) {
-//   return (
-//     <div>
-//       <h3>🛠️ Admin Dashboard</h3>
-//       <p>Welcome, {user.name}</p>
 
-//       <ul>
-//         <li>👥 Manage Users</li>
-//         <li>📚 Manage Courses</li>
-//         <li>🧹 Delete Courses</li>
-//         <li>📊 View System Reports</li>
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default AdminDashboard;
 
 import {jwtDecode} from "jwt-decode";
 

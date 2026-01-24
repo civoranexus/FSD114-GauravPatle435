@@ -16,6 +16,25 @@ const userSchema = new mongoose.Schema(
     ref: "Course",
    },
   ],
+  progress: [
+  {
+    course: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course"
+    },
+
+    completedLessons: [
+      {
+        type: mongoose.Schema.Types.ObjectId
+      }
+    ],
+
+    quizCompleted: {
+      type: Boolean,
+      default: false
+    }
+  }
+],
   },
   { timestamps: true }
 );

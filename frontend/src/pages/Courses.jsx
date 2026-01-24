@@ -62,6 +62,11 @@ function Courses() {
          {(user.role === "admin" )&& (<button onClick={() => navigate(`/add-lesson/${course._id}`)}>
           ▶ Add Lesson
          </button>)}
+
+        {(user.role === "admin") && ( <button
+            onClick={() => navigate(`/teacher/create-quiz/${course._id}`)}>
+           📝 Add Quiz
+        </button>)}
         </div>
       ))}
     </div>

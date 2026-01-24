@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/uploadMiddleware");
 
-const { createCourse, getCourseById, getCourses, enrollCourse, updateCourse, getMyCourses, getTeacherCourses, addLesson } = require("../controllers/courseController");
+const { createCourse, getCourseById, getCourses, enrollCourse, updateCourse, getMyCourses, getTeacherCourses, addLesson,markLessonComplete, getCourseProgress} = require("../controllers/courseController");
 const protect = require("../middleware/authMiddleware");
 const authorizeRoles = require("../middleware/roleMiddleware");
 
@@ -82,6 +82,20 @@ router.post(
 );
 
 router.get("/:id", protect, getCourseById);
+router.post(
+  "/progress/:courseId/:lessonId",
+  protect,
+  authorizeRoles("student"),
+  markLessonComplete
+);
+
+router.get(
+  "/progress/:courseId",
+  protect,
+  authorizeRoles("student"),
+  getCourseProgress
+);
+
 module.exports = router;
 
 

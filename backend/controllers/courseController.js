@@ -189,3 +189,57 @@ exports.addLesson = async (req, res) => {
     res.status(500).json({ message: "Error adding lesson" });
   }
 };
+
+// MARK LESSON COMPLETE
+exports.markLessonComplete = async (req, res) => {
+
+  const { courseId, lessonId } = req.params;
+
+  const user = await User.findById(req.user.id);
+
+  let progress = user.progress.find(
+    (p) => p.course.toString() === courseId
+  );
+
+  if (!progress) {
+    progress = {
+      course: courseId,
+      completedLessons: [],
+      quizCompleted: false
+    };
+
+    user.progress.push(progress);
+  }
+
+  if (!progress.completedLessons.includes(lessonId)) {
+    progress.completedLessons.push(lessonId);
+  }
+
+  await user.save();
+
+  res.json({ message: "Lesson marked complete" });
+};
+
+// GET COURSE PROGRESS
+exports.getCourseProgress = async (req, res) => {
+
+  const { courseId } = req.params;
+
+  const user = await User.findById(req.user.id);
+
+  const progress = user.progress.find(
+    (p) => p.course.toString() === courseId
+  );
+
+  if (!progress) {
+    return res.json({
+      completedLessons: [],
+      quizCompleted: false
+    });
+  }
+
+  res.json({
+    completedLessons: progress.completedLessons,
+    quizCompleted: progress.quizCompleted
+  });
+};

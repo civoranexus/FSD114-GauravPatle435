@@ -18,14 +18,6 @@ mongoose
   const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
 
-// const { protect } = require("./middleware/authMiddleware");
-
-// app.get("/api/protected", protect, (req, res) => {
-//   res.json({
-//     message: "Protected route accessed",
-//     user: req.user,
-//   });
-// });
 
 // protected routes
 const protectedRoutes = require("./routes/protectedRoutes");
@@ -41,6 +33,15 @@ app.use("/api/courses", courseRoutes);
 const adminRoutes = require("./routes/adminRoutes");
 
 app.use("/api/admin", adminRoutes);
+
+//quiz routes
+const quizRoutes = require("./routes/quizRoutes");
+app.use("/api/quiz",quizRoutes);
+
+// certificate route
+const certificateRoutes = require("./routes/certificateRoutes");
+
+app.use("/api/certificate", certificateRoutes);
 
 // Test route
 app.get("/", (req, res) => {
