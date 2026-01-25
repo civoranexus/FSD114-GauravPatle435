@@ -23,6 +23,7 @@ import AddLesson from "./pages/AddLesson";
 import CreateQuiz from "./pages/CreateQuiz";
 import AttemptQuiz from "./pages/AttemptQuiz";
 import QuizResults from "./pages/QuizResults";
+import MyCertificates from "./pages/Mycertificates";
 
 
 
@@ -114,6 +115,7 @@ function App() {
 <Route path="/teacher/create-quiz/:id" element={<CreateQuiz />} />
 <Route path="/student/quiz/:id" element={<AttemptQuiz />} />
 <Route path="/student/results" element={<QuizResults />} />
+<Route path="/my-certificates" element={<MyCertificates />} />
 
       </Routes>
     </BrowserRouter>

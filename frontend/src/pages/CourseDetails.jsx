@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
 
 function CourseDetails() {
 
@@ -9,6 +10,7 @@ function CourseDetails() {
   const [completedLessons, setCompletedLessons] = useState([]);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const token = localStorage.getItem("token");
+  const user = jwtDecode(token);
 
   // ======================
   // Fetch Course
@@ -105,7 +107,7 @@ function CourseDetails() {
       <p>{course.description}</p>
 
       {/* ✅ Progress Percentage */}
-      <p>
+      {(user.role === "student") && (<p>
  Course Progress:{" "}
  {course.lessons.length > 0
   ? Math.round(
@@ -116,7 +118,8 @@ function CourseDetails() {
     )
   : 0}
  %
-</p>
+</p>)}
+      
 
 {course.lessons.length === completedLessons.length &&
  quizCompleted && (
@@ -159,15 +162,17 @@ function CourseDetails() {
               </a>
             </div>
           )}
-
-          <button
+          {
+            (user.role === "student") && ( <button
             onClick={() => markComplete(course._id, lesson._id)}
             disabled={completedLessons.includes(lesson._id)}
           >
             {completedLessons.includes(lesson._id)
               ? "✅ Completed"
               : "Mark Complete"}
-          </button>
+          </button>)
+          }
+         
 
         </div>
 

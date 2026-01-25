@@ -24,7 +24,6 @@ function AdminDashboard() {
          <li><a href="/courses"><button>📚 All Courses</button></a></li>
          <li><a href="/create-course"><button>➕ Create Course</button></a></li>
          <li><a href="/admin/delete-course"><button>🗑️ Delete Courses</button></a></li>
-         <li>📊 View System Reports</li>
        </ul>
     </div>
   );
