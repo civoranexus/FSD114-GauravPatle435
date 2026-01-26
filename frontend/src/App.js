@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route,  } from "react-router-dom";
+import Indexnavbar from "./components/Indexnavbar";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -25,17 +26,32 @@ import AttemptQuiz from "./pages/AttemptQuiz";
 import QuizResults from "./pages/QuizResults";
 import MyCertificates from "./pages/Mycertificates";
 
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
+
+
 
 
 function App() {
   return (
+    <>
+    
     <BrowserRouter>
       <Routes>
         {/* Redirect root */}
-        <Route path="/" element={<Navigate to="/register" />} />
+        {/* <Route path="/" element={<Navigate to="/home" />} /> */}
+        {/* <Route path="/" element = {<Indexnavbar/>} /> */}
+        <Route path="/register" element={<><Indexnavbar/><Register /> </>} />
+        <Route path="/login" element={<><Indexnavbar/><Login /> </>} />
 
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<><Indexnavbar/><Home /> </>} />
+        <Route path="/about" element={<><Indexnavbar/><About /> </>} />
+      <Route path="/services" element={<><Indexnavbar/><Services /> </>} />
+      <Route path="/contact" element={<><Indexnavbar/><Contact /> </>} />
+
 
         <Route
           path="/dashboard"
@@ -117,8 +133,13 @@ function App() {
 <Route path="/student/results" element={<QuizResults />} />
 <Route path="/my-certificates" element={<MyCertificates />} />
 
+
       </Routes>
+    
+    <Footer/>
     </BrowserRouter>
+    </>
+    
   );
 }
 
