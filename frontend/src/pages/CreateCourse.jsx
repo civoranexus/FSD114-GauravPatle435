@@ -90,67 +90,108 @@ function CreateCourse() {
 };
 
   return (
-    <div>
+  <div className="min-h-screen bg-gradient-to-br from-purple-100 to-indigo-100 flex justify-center items-start pt-24 pb-12 px-4">
 
-      <h2>Create Course</h2>
+    <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl p-8">
 
-      <form onSubmit={handleSubmit}>
+      {/* HEADER */}
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+        📚 Create New Course
+      </h2>
 
-        <input
-          placeholder="Course Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+      <form onSubmit={handleSubmit} className="space-y-5">
 
-        <br /><br />
+        {/* COURSE TITLE */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            Course Title
+          </label>
 
-        <textarea
-          placeholder="Course Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
+          <input
+            placeholder="Enter course title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-purple-400 outline-none"
+          />
+        </div>
 
-        <br /><br />
+        {/* DESCRIPTION */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            Course Description
+          </label>
 
-        <input
-          placeholder="Lesson Title"
-          value={lessonTitle}
-          onChange={(e) => setLessonTitle(e.target.value)}
-          required
-        />
+          <textarea
+            placeholder="Enter course description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+            rows="3"
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-purple-400 outline-none"
+          />
+        </div>
 
-        <br /><br />
+        {/* LESSON TITLE */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            First Lesson Title
+          </label>
 
-        <label>Upload Video</label>
-        <input
-          type="file"
-          accept="video/*"
-          onChange={(e) => setVideo(e.target.files[0])}
-          required
-        />
+          <input
+            placeholder="Enter lesson title"
+            value={lessonTitle}
+            onChange={(e) => setLessonTitle(e.target.value)}
+            required
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-400 outline-none"
+          />
+        </div>
 
-        <br /><br />
+        {/* VIDEO UPLOAD */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            Upload Lesson Video
+          </label>
 
-        <label>Upload PDF</label>
-        <input
-          type="file"
-          accept="application/pdf"
-          onChange={(e) => setPdf(e.target.files[0])}
-          required
-        />
+          <input
+            type="file"
+            accept="video/*"
+            onChange={(e) => setVideo(e.target.files[0])}
+            required
+            className="w-full border border-dashed border-purple-400 rounded-xl p-3 bg-purple-50 cursor-pointer"
+          />
+        </div>
 
-        <br /><br />
+        {/* PDF UPLOAD */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            Upload Lesson PDF
+          </label>
 
-        <button type="submit">
-         {loading ? "Creating..." : "Create Course"}
+          <input
+            type="file"
+            accept="application/pdf"
+            onChange={(e) => setPdf(e.target.files[0])}
+            required
+            className="w-full border border-dashed border-indigo-400 rounded-xl p-3 bg-indigo-50 cursor-pointer"
+          />
+        </div>
+
+        {/* SUBMIT BUTTON */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-gradient-to-r from-purple-400 to-indigo-500 hover:opacity-90 text-white font-semibold py-3 rounded-xl shadow-lg transition disabled:opacity-60"
+        >
+          {loading ? "Creating..." : "Create Course"}
         </button>
 
       </form>
 
     </div>
-  );
+
+  </div>
+);
 }
 
 export default CreateCourse;

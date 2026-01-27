@@ -101,85 +101,142 @@ function CourseDetails() {
   }
 
   return (
-    <div>
+  <div className="min-h-screen bg-gradient-to-br from-purple-100 to-indigo-100 pt-24 pb-12 px-4">
 
-      <h2>{course.title}</h2>
-      <p>{course.description}</p>
+    {/* COURSE CARD */}
+    <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl p-8">
 
-      {/* ✅ Progress Percentage */}
-      {(user.role === "student") && (<p>
- Course Progress:{" "}
- {course.lessons.length > 0
-  ? Math.round(
-      (
-        (completedLessons.length / course.lessons.length) * 75 +
-        (quizCompleted ? 25 : 0)
-      )
-    )
-  : 0}
- %
-</p>)}
-      
+      {/* TITLE */}
+      <h2 className="text-3xl font-bold text-gray-800">
+        {course.title}
+      </h2>
 
-{course.lessons.length === completedLessons.length &&
- quizCompleted && (
+      <p className="text-gray-600 mt-2">
+        {course.description}
+      </p>
 
-  <button
-  onClick={downloadCertificate}
-  style={{
-    padding: "12px",
-    background: "gold",
-    border: "none",
-    fontWeight: "bold",
-    marginTop: "15px"
-  }}
->
- 🏆 Download Certificate
-</button>
+      {/* ================= PROGRESS ================= */}
 
-)}
+      {user.role === "student" && (
+        <div className="mt-4">
 
-      <h3>📚 Lessons</h3>
+          <div className="bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div
+              className="h-full  bg-gradient-to-r from-green-400 to-emerald-600 transition-all"
+              style={{
+                width: `${
+                  course.lessons.length > 0
+                    ? Math.round(
+                        ((completedLessons.length / course.lessons.length) *
+                          75 +
+                          (quizCompleted ? 25 : 0))
+                      )
+                    : 0
+                }%`,
+              }}
+            />
+          </div>
 
-      {course.lessons.map((lesson) => (
+          <p className="mt-2 text-sm font-semibold text-purple-700">
+            Progress:{" "}
+            {course.lessons.length > 0
+              ? Math.round(
+                  (completedLessons.length / course.lessons.length) * 75 +
+                    (quizCompleted ? 25 : 0)
+                )
+              : 0}
+            %
+          </p>
+        </div>
+      )}
 
-        <div key={lesson._id}>
+      {/* ================= CERTIFICATE ================= */}
 
-          <h4>{lesson.title}</h4>
+      {course.lessons.length === completedLessons.length &&
+        quizCompleted && (
+          <button
+            onClick={downloadCertificate}
+            className="mt-6 bg-gradient-to-r from-yellow-300 to-orange-400 hover:opacity-90 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition"
+          >
+            🏆 Download Certificate
+          </button>
+        )}
 
-          <iframe
-            width="400"
-            height="250"
-            src={lesson.videoUrl}
-            allowFullScreen
-            title={lesson.title}
-          />
+      {/* ================= LESSONS ================= */}
 
-          {lesson.pdfUrl && (
-            <div>
-              <a href={lesson.pdfUrl} target="_blank" rel="noreferrer">
+      <h3 className="text-2xl font-bold text-gray-800 mt-10 mb-6">
+        📚 Lessons
+      </h3>
+
+      <div className="grid gap-6">
+
+        {course.lessons.map((lesson) => (
+
+          <div
+            key={lesson._id}
+            className="bg-gray-50 rounded-2xl p-6 shadow hover:shadow-lg transition"
+          >
+
+            <h4 className="text-lg font-semibold text-gray-800 mb-3">
+              {lesson.title}
+            </h4>
+
+            {/* VIDEO */}
+            <div className="rounded-xl overflow-hidden shadow mb-3">
+              <iframe
+                className="w-full h-[250px]"
+                src={lesson.videoUrl}
+                allowFullScreen
+                title={lesson.title}
+              />
+            </div>
+
+            {/* PDF */}
+            {lesson.pdfUrl && (
+              <a
+                href={lesson.pdfUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-purple-600 font-medium hover:underline"
+              >
                 📄 Download Notes
               </a>
-            </div>
-          )}
-          {
-            (user.role === "student") && ( <button
-            onClick={() => markComplete(course._id, lesson._id)}
-            disabled={completedLessons.includes(lesson._id)}
-          >
-            {completedLessons.includes(lesson._id)
-              ? "✅ Completed"
-              : "Mark Complete"}
-          </button>)
-          }
-         
+            )}
 
-        </div>
+            {/* COMPLETE BUTTON */}
+            {user.role === "student" && (
+              <div className="mt-4">
 
-      ))}
+                <button
+                  onClick={() =>
+                    markComplete(course._id, lesson._id)
+                  }
+                  disabled={completedLessons.includes(lesson._id)}
+                  className={`px-5 py-2 rounded-xl font-semibold transition shadow
+                  ${
+                    completedLessons.includes(lesson._id)
+                      ? "bg-green-300 text-white cursor-not-allowed"
+                      : "bg-gradient-to-r from-purple-400 to-indigo-500 text-white hover:opacity-90"
+                  }`}
+                >
+                  {completedLessons.includes(lesson._id)
+                    ? "✅ Completed"
+                    : "Mark Complete"}
+                </button>
+
+              </div>
+            )}
+
+          </div>
+
+        ))}
+
+      </div>
 
     </div>
-  );
+
+  </div>
+);
 }
 
 export default CourseDetails;

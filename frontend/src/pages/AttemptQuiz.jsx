@@ -73,43 +73,76 @@ function AttemptQuiz() {
   if (loading) return <h3>Loading Quiz...</h3>;
 
   return (
-    <div style={{ padding: "20px" }}>
+  <div className="min-h-screen bg-gradient-to-br from-purple-100 to-indigo-100 pt-24 pb-12 px-4">
 
-      <h2>{quiz.title}</h2>
+    <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl p-8">
 
-      {quiz.questions.map((q, index) => (
+      {/* QUIZ TITLE */}
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+        🧠 {quiz.title}
+      </h2>
 
-        <div key={index} style={{ marginBottom: "20px" }}>
+      {/* QUESTIONS */}
+      <div className="space-y-6">
 
-          <h4>{index + 1}. {q.questionText}</h4>
+        {quiz.questions.map((q, index) => (
 
-          {q.options.map((opt, optIndex) => (
+          <div
+            key={index}
+            className="bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition"
+          >
 
-            <div key={optIndex}>
+            {/* QUESTION */}
+            <h4 className="font-semibold text-gray-800 mb-4">
+              {index + 1}. {q.questionText}
+            </h4>
 
-              <input
-                type="radio"
-                name={`q-${index}`}
-                value={opt}
-                onChange={() => handleAnswer(index, opt)}
-              />
+            {/* OPTIONS */}
+            <div className="space-y-3">
 
-              {opt}
+              {q.options.map((opt, optIndex) => (
+
+                <label
+                  key={optIndex}
+                  className="flex items-center gap-3 bg-white border rounded-lg px-4 py-2 cursor-pointer hover:bg-purple-50 transition"
+                >
+
+                  <input
+                    type="radio"
+                    name={`q-${index}`}
+                    value={opt}
+                    onChange={() => handleAnswer(index, opt)}
+                    className="accent-purple-500"
+                  />
+
+                  <span className="text-gray-700">
+                    {opt}
+                  </span>
+
+                </label>
+
+              ))}
 
             </div>
 
-          ))}
+          </div>
 
-        </div>
+        ))}
 
-      ))}
+      </div>
 
-      <button onClick={submitQuiz}>
-        Submit Quiz
+      {/* SUBMIT BUTTON */}
+      <button
+        onClick={submitQuiz}
+        className="w-full mt-8  bg-gradient-to-r from-green-400 to-emerald-600 hover:opacity-90 text-white font-semibold py-3 rounded-xl shadow-lg transition"
+      >
+         Submit Quiz
       </button>
 
     </div>
-  );
+
+  </div>
+);
 }
 
 export default AttemptQuiz;

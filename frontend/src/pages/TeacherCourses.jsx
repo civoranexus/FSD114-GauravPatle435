@@ -27,31 +27,89 @@ function TeacherCourses() {
   }, [token]);
 
  return (
-    <div>
-      <h2>📚 My Courses</h2>
+  <div className="min-h-screen bg-gradient-to-br from-purple-100 to-indigo-100 pt-24 pb-12 px-4">
 
-      {courses.map((course) => (
-        <div key={course._id} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
-          <h3>{course.title}</h3>
-          <p>{course.description}</p>
+    <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-8">
 
-          {/* ✅ ADD EDIT BUTTON HERE */}
-          <button onClick={() => navigate(`/teacher/courses/edit/${course._id}`)}>
-            ✏️ Edit
-          </button>
+      {/* HEADER */}
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+        📚 My Courses (Teacher Panel)
+      </h2>
 
-          {(user.role === "teacher" )&& (<button onClick={() => navigate(`/teacher/courses/add-lesson/${course._id}`)}>
-          ▶ Add Lesson
-         </button>)}
+      {/* COURSE GRID */}
+      <div className="grid md:grid-cols-2 gap-6">
 
-         <button
-            onClick={() => navigate(`/teacher/create-quiz/${course._id}`)}>
-           📝 Add Quiz
-        </button>
-        </div>
-      ))}
+        {courses.map((course) => (
+
+          <div
+            key={course._id}
+            className="bg-gray-50 rounded-2xl shadow p-6 hover:shadow-lg transition"
+          >
+
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+              {course.title}
+            </h3>
+
+            <p className="text-gray-600 text-sm mb-4">
+              {course.description}
+            </p>
+
+            {/* ACTION BUTTONS */}
+            <div className="flex flex-col sm:flex-row gap-3">
+
+              {/* EDIT */}
+              <button
+                onClick={() =>
+                  navigate(`/teacher/courses/edit/${course._id}`)
+                }
+                className="bg-gradient-to-r from-blue-300 to-cyan-400 hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold shadow transition"
+              >
+                ✏️ Edit
+              </button>
+
+              {/* ADD LESSON */}
+              {user.role === "teacher" && (
+                <button
+                  onClick={() =>
+                    navigate(
+                      `/teacher/courses/add-lesson/${course._id}`
+                    )
+                  }
+                  className="bg-gradient-to-r from-purple-300 to-pink-400 hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold shadow transition"
+                >
+                  ▶ Add Lesson
+                </button>
+              )}
+
+              {/* ADD QUIZ */}
+              <button
+                onClick={() =>
+                  navigate(`/teacher/create-quiz/${course._id}`)
+                }
+                className="bg-gradient-to-r from-indigo-300 to-violet-400 hover:opacity-90 text-white px-4 py-2 rounded-xl font-semibold shadow transition"
+              >
+                📝 Add Quiz
+              </button>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
+      {/* EMPTY STATE */}
+      {courses.length === 0 && (
+        <p className="text-center text-gray-500 mt-8">
+          You have not created any courses yet.
+        </p>
+      )}
+
     </div>
-  );
+
+  </div>
+);
 }
 
 export default TeacherCourses;

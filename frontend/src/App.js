@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route,  } from "react-router-dom";
 import Indexnavbar from "./components/Indexnavbar";
+
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -31,6 +32,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
+import Layout from "./components/Layout";
 
 
 
@@ -52,13 +54,16 @@ function App() {
       <Route path="/services" element={<><Indexnavbar/><Services /> </>} />
       <Route path="/contact" element={<><Indexnavbar/><Contact /> </>} />
 
-
+        <Route element={<Layout />}>
         <Route
           path="/dashboard"
-          element={
-            <ProtectedRoute>
+          element={<>
+          <ProtectedRoute>
+            
               <Dashboard />
             </ProtectedRoute>
+          </>
+            
           }
         />
 
@@ -133,7 +138,7 @@ function App() {
 <Route path="/student/results" element={<QuizResults />} />
 <Route path="/my-certificates" element={<MyCertificates />} />
 
-
+   </Route>
       </Routes>
     
     <Footer/>

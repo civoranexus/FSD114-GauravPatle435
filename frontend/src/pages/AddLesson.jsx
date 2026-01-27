@@ -54,194 +54,76 @@ const AddLesson = () => {
   };
 
   return (
-    <div style={{ padding: "30px" }}>
+  <div className="min-h-screen bg-gradient-to-br from-purple-100 to-indigo-100 flex items-center justify-center px-4">
 
-      <h2>Add New Lesson</h2>
+    <div className="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8">
 
-      <form onSubmit={handleSubmit}>
+      {/* HEADER */}
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+        ➕ Add New Lesson
+      </h2>
 
-        <input
-          type="text"
-          placeholder="Lesson Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+      <form onSubmit={handleSubmit} className="space-y-5">
 
-        <br /><br />
+        {/* TITLE INPUT */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            Lesson Title
+          </label>
 
-        <label>Upload Video</label>
-        <input
-          type="file"
-          accept="video/*"
-          onChange={(e) => setVideo(e.target.files[0])}
-        />
+          <input
+            type="text"
+            placeholder="Enter lesson title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-purple-400 outline-none"
+          />
+        </div>
 
-        <br /><br />
+        {/* VIDEO UPLOAD */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            Upload Video
+          </label>
 
-        <label>Upload PDF (Optional)</label>
-        <input
-          type="file"
-          accept="application/pdf"
-          onChange={(e) => setPdf(e.target.files[0])}
-        />
+          <input
+            type="file"
+            accept="video/*"
+            onChange={(e) => setVideo(e.target.files[0])}
+            className="w-full border border-dashed border-purple-400 rounded-xl p-3 bg-purple-50 cursor-pointer"
+          />
+        </div>
 
-        <br /><br />
+        {/* PDF UPLOAD */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            Upload PDF (Optional)
+          </label>
 
-        <button type="submit">
+          <input
+            type="file"
+            accept="application/pdf"
+            onChange={(e) => setPdf(e.target.files[0])}
+            className="w-full border border-dashed border-indigo-400 rounded-xl p-3 bg-indigo-50 cursor-pointer"
+          />
+        </div>
+
+        {/* BUTTON */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-gradient-to-r from-purple-400 to-indigo-500 hover:opacity-90 text-white font-semibold py-3 rounded-xl shadow-lg transition disabled:opacity-60"
+        >
           {loading ? "Uploading..." : "Add Lesson"}
         </button>
 
       </form>
 
     </div>
-  );
+
+  </div>
+);
 };
 
 export default AddLesson;
 
-// import React, { useState } from "react";
-// import { useParams } from "react-router-dom";
-
-// function AddLesson() {
-
-//   const { id } = useParams(); // course id
-//   const token = localStorage.getItem("token");
-
-//   const [title, setTitle] = useState("");
-//   const [videoFile, setVideoFile] = useState(null);
-//   const [pdfFile, setPdfFile] = useState(null);
-//   const [loading, setLoading] = useState(false);
-
-//   // =========================
-//   // Upload File Function
-//   // =========================
-//   const uploadFile = async (file) => {
-
-//     const formData = new FormData();
-//     formData.append("file", file);
-
-//     const res = await fetch("http://localhost:5000/api/courses/upload", {
-//       method: "POST",
-//       headers: {
-//         Authorization: `Bearer ${token}`
-//       },
-//       body: formData
-//     });
-
-//     const data = await res.json();
-
-//     if (!res.ok) {
-//       throw new Error("Upload failed");
-//     }
-
-//     return data.url;
-//   };
-
-//   // =========================
-//   // Submit Lesson
-//   // =========================
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (!videoFile) {
-//       alert("Video required");
-//       return;
-//     }
-
-//     try {
-
-//       setLoading(true);
-
-//       // Upload files
-//       const videoUrl = await uploadFile(videoFile);
-//       let pdfUrl = "";
-
-//       if (pdfFile) {
-//         pdfUrl = await uploadFile(pdfFile);
-//       }
-
-//       // Save lesson
-//       const res = await fetch(
-//         `http://localhost:5000/api/courses/${id}/lessons`,
-//         {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//             Authorization: `Bearer ${token}`
-//           },
-//           body: JSON.stringify({
-//             title,
-//             videoUrl,
-//             pdfUrl
-//           })
-//         }
-//       );
-
-//       const data = await res.json();
-
-//       if (res.ok) {
-//         alert("✅ Lesson added successfully");
-
-//         setTitle("");
-//         setVideoFile(null);
-//         setPdfFile(null);
-
-//       } else {
-//         alert(data.message || "Failed to add lesson");
-//       }
-
-//     } catch (error) {
-//       console.error(error);
-//       alert("❌ Upload failed");
-
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div style={{ padding: "20px" }}>
-
-//       <h2>Add Lesson</h2>
-
-//       <form onSubmit={handleSubmit}>
-
-//         <input
-//           placeholder="Lesson Title"
-//           value={title}
-//           onChange={(e) => setTitle(e.target.value)}
-//           required
-//         />
-
-//         <br /><br />
-
-//         <label>Upload Video</label>
-//         <input
-//           type="file"
-//           accept="video/*"
-//           onChange={(e) => setVideoFile(e.target.files[0])}
-//           required
-//         />
-
-//         <br /><br />
-
-//         <label>Upload PDF (Optional)</label>
-//         <input
-//           type="file"
-//           accept="application/pdf"
-//           onChange={(e) => setPdfFile(e.target.files[0])}
-//         />
-
-//         <br /><br />
-
-//         <button type="submit" disabled={loading}>
-//           {loading ? "Uploading..." : "Add Lesson"}
-//         </button>
-
-//       </form>
-
-//     </div>
-//   );
-// }
-
-// export default AddLesson;
