@@ -35,7 +35,6 @@ function MyCertificates() {
     a.href = url;
     a.download = "certificate.pdf";
     a.click();
-
     window.URL.revokeObjectURL(url);
   };
 
@@ -68,7 +67,7 @@ function MyCertificates() {
 
             {/* COURSE TITLE */}
             <h4 className="text-lg font-semibold text-gray-800 mb-2">
-              🎓 {cert.course.title}
+              🎓 {cert.course?.title}
             </h4>
 
             {/* DATE */}
@@ -82,7 +81,7 @@ function MyCertificates() {
             {/* DOWNLOAD BUTTON */}
             <button
               onClick={() =>
-                downloadCertificate(cert.course._id)
+                downloadCertificate(cert.course?._id)
               }
               className="bg-gradient-to-r from-purple-400 to-indigo-500 hover:opacity-90 text-white px-5 py-2 rounded-xl font-semibold shadow transition"
             >
