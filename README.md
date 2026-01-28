@@ -130,4 +130,266 @@
   Made with ❤️ by CivoraX Team
 </p>
 
+---
 
+## 📘 Project: EduVillage – Online Learning Platform
+
+**Intern Name:** Gaurav Patle  
+**Internship:** CivoraX Internship Program  
+**Project ID:** FSD114  
+**Domain:** Full Stack Development (E-Learning Platform)
+
+### 🎯 Project Objective
+EduVillage is a full-stack online learning platform designed to connect students, teachers, and administrators in a structured digital learning environment.  
+The platform supports role-based access, course creation, content delivery, progress tracking, and assessments.
+
+### 👥 User Roles
+- **Student:** Enroll in courses, consume content, track progress
+- **Teacher:** Create and manage courses and lessons
+- **Admin:** Manage users, courses, and platform activity
+
+### 🛠 Tech Stack
+- **Frontend:** React.js, HTML, CSS, JavaScript
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT (Role-Based Access Control)
+- **Version Control:** Git & GitHub
+
+### 📂 Repository Structure
+docs/        → Database schema & documentation
+backend/     → Server-side application
+frontend/    → Client-side application
+
+### 📐 Documentation
+- Database Schema: `docs/database-schema.draw.io`
+
+### 🧑‍💻 Tech Stack
+Frontend
+
+React.js
+Tailwind CSS (Civora Brand UI)
+React Router DOM
+JWT Decode
+Axios / Fetch API
+
+
+Backend
+
+Node.js
+Express.js
+MongoDB (Atlas)
+Mongoose ODM
+JWT Authentication
+Bcrypt Password Hashing
+
+
+Cloud & Services
+
+Cloudinary (Video & PDF Uploads)
+Render (Backend Hosting)
+Vercel (Frontend Hosting)
+MongoDB Atlas (Cloud Database)
+
+
+Tools
+Git & GitHub
+Postman / Thunder Client
+VS Code
+
+
+### 🎯 Features
+
+### 🔐 Authentication System
+
+User Registration & Login
+JWT Token-based Authentication
+Password Encryption (bcrypt)
+Protected Routes
+
+
+### 👥 Role Based Access Control
+
+Three user roles:
+Role           Permissions
+Student        Enroll courses, watch lessons, attempt quiz, download certificate
+Teacher        Create course, upload lessons, add quizzes, edit courses
+Admin          Manage users, delete courses, control platform data
+
+
+### 📚 Course Management
+
+Create Courses (Teacher/Admin)
+Upload Video Lessons
+Upload PDF Notes
+Add Multiple Lessons per Course
+Edit Course Details
+Delete Courses (Admin)
+
+
+### 🎓 Student Features
+
+Enroll in Courses
+View Lessons (Video + PDF)
+Track Lesson Progress
+Attempt Quizzes
+View Quiz Results
+View Course Progress Percentage
+Download Completion Certificate
+
+
+### 🧠 Quiz System
+
+Teacher can create quizzes per course
+Multiple choice questions
+Auto evaluation
+Score calculation
+Student result storage
+Quiz completion tracking
+
+
+### 📊 Progress Tracking
+
+Lesson Completion Tracking
+Quiz Completion Status
+Progress Percentage Calculation
+Certificate Unlock Logic
+
+
+### 🏆 Certificate Generation
+
+Automatic Certificate Generation (PDF)
+Custom Certificate Design
+Student Name + Course Name
+Issue Date
+Certificate Record Storage
+Download Anytime
+
+
+### 📁 File Upload System
+
+Video Upload via Cloudinary
+PDF Upload via Cloudinary
+Secure Cloud Storage
+Optimized Media Delivery
+
+
+### 🎨 UI & Design
+
+Civora Brand Theme
+Tailwind CSS Styling
+Responsive Layout
+Mobile Hamburger Menu
+Role-based Dashboard UI
+Gradient Cards & Buttons
+Professional Dashboard Layout
+
+
+### 🗂 Project Folder Structure
+
+EduVillage
+│
+├── backend
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── middleware
+│   ├── server.js
+│
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── App.js
+│   │   └── index.js
+│
+└── README.md
+
+
+### ⚙️ Installation Guide (Local Setup)
+1️⃣ Clone Repository
+
+Bash
+git clone https://github.com/yourusername/eduvillage.git
+
+
+2️⃣ Backend Setup
+
+Bash
+cd backend
+npm install
+
+Create .env file:
+
+MONGO_URI=your_mongodb_url
+JWT_SECRET=your_secret_key
+CLOUDINARY_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_key
+CLOUDINARY_API_SECRET=your_secret
+
+
+Run Backend:
+
+Bash
+npm start
+
+3️⃣ Frontend Setup
+
+Bash
+cd frontend
+npm install
+npm start
+
+
+
+### 🌐 API Modules Implemented
+
+Auth API (Login/Register)
+Course API
+Lesson API
+Enrollment API
+Quiz API
+Progress API
+Certificate API
+Admin Management API
+
+
+### 🔐 Security Features
+
+JWT Protected Routes
+Role Authorization Middleware
+Secure Password Hashing
+Token Validation
+Access Control Guards
+
+
+### 📈 Learning Outcomes
+
+This project helped me gain practical experience in:
+Full Stack MERN Development
+REST API Design
+Authentication Systems
+Cloud File Upload
+Database Relationships
+Role Based Authorization
+Production Deployment
+UI/UX Design using Tailwind CSS
+Real-world LMS Architecture
+
+
+### 🏁 Future Enhancements
+
+Payment Integration
+Live Class Streaming
+Real-Time Chat Support
+AI Course Recommendation
+Course Rating System
+Admin Analytics Dashboard
+Dark Mode UI
+
+
+### 👨‍🎓 Developer
+
+Name: Gaurav Patle
+Role: Full Stack Developer (Intern)
+Project Type: Internship + Academic Project
+Technology: MERN Stack
