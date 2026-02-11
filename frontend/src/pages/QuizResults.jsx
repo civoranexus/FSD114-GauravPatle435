@@ -11,7 +11,7 @@ function QuizResults() {
     const fetchResults = async () => {
 
       const res = await fetch(
-        "http://localhost:5000/api/quiz/results/me",
+        "https://fsd114-eduvillage-backend.onrender.com/api/quiz/results/me",
         {
           headers: {
             Authorization: `Bearer ${token}`

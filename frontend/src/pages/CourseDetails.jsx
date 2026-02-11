@@ -71,7 +71,7 @@ function CourseDetails() {
   const downloadCertificate = async () => {
 
   const res = await fetch(
-    `http://localhost:5000/api/certificate/${course._id}`,
+    `https://fsd114-eduvillage-backend.onrender.com/api/certificate/${course._id}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`

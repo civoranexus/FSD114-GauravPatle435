@@ -28,7 +28,7 @@ const AddLesson = () => {
       setLoading(true);
 
        await axios.post(
-        `http://localhost:5000/api/courses/${id}/lessons`,
+        `https://fsd114-eduvillage-backend.onrender.com/api/courses/${id}/lessons`,
         formData,
         {
           headers: {
