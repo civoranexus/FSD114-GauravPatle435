@@ -12,24 +12,25 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(form),
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (data.token) {
-      localStorage.setItem("token", data.token);
-      alert("Login successful");
-      window.location.href = "/dashboard";
-    } else {
-      alert("Login failed");
-    }
-  };
+  if (data.token) {
+    localStorage.setItem("token", data.token);
+    alert("Login successful");
+    window.location.href = "/dashboard";
+  } else {
+    alert("Login failed");
+  }
+};
+
 
   return (
 
